@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            currentUser: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -73,7 +74,8 @@ createApp({
                 {
                     name: 'Alessandro B.',
                     avatar: './img/avatar_4.jpg',
-                    visible: true, messages: [
+                    visible: true, 
+                    messages: [
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Lo sai che ha aperto una nuova pizzeria?',
@@ -165,5 +167,11 @@ createApp({
                 }
             ]
         }
+    },
+    methods:{
+
+    },
+    mounted(){
+        console.log(this.contacts[0].messages[0].status)
     }
 }).mount('#app')

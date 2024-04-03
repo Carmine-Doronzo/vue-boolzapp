@@ -41,14 +41,16 @@
             </div>
 
             <!-- lista contatti disponibili -->
-            <ul >
-                <li v-for="(contact,i) in contacts">
+            <ul>
+                <li v-for="(contact,i) in contacts" @click="currentUser = i">
                     <div class="contact-user">
                         <div class="chat-user">
                             <img :src="contact.avatar" alt="">
                             <div class="contact-description">
                                 <h4>{{contact.name}}</h4>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <div v-for="(message,i) in contacts[i].messages" >
+                                    <p>{{message.message}}</p>
+                                </div>
                             </div>
 
                             <p class="time">16:15</p>
@@ -178,7 +180,7 @@
 
             <!-- messaggio inviato -->
             <div class="main-chat">
-                <div class="chat-green">
+                <div :class="message.status ==='sent' ? 'chat-green':'chat-white'" v-for="(message,i) in contacts[currentUser].messages">
                     <div class="chat-modal-time">
                         <i class="fa-solid fa-chevron-down"></i>
                         <!-- BONUS -->
@@ -192,21 +194,19 @@
                         <p class="time-chat">16:15</p>
                     </div>
                     <div class="message">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia
-                            ipsa
-                            tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime
-                            placeat
-                            ratione ex rerum.</p>
+                        <p>{{message.message}}</p>
+                        
                     </div>
+                    
                 </div>
 
                 <!-- messaggio ricevuto -->
-                <div class="chat-white">
+                 <!-- <div class="chat-white" v-for="(message,i) in contacts[currentUser].messages">
                     <div class="chat-modal-time">
 
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <i class="fa-solid fa-chevron-down"></i> -->
                         <!-- BONUS -->
-                        <div class="modal-menu">
+                        <!-- <div class="modal-menu">
                             <ul>
                                 <li>cancella</li>
                                 <li>inoltra</li>
@@ -215,14 +215,12 @@
                         </div>
                         <p class="time-chat">16:15</p>
                     </div>
-                    <div class="message">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia
-                            ipsa
-                            tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime
-                            placeat
-                            ratione ex rerum.</p>
+                    <div>
+                        <div class="message"  >
+                            <p>{{message.message}}</p>
+                        </div>
                     </div>
-                </div>
+                </div>  -->
 
             </div>
 
