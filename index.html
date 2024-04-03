@@ -35,27 +35,27 @@
             <div class="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Cerca o inizia una nuova chat">
-                
+
 
 
             </div>
-            
+
             <!-- lista contatti disponibili -->
-            <ul>
-                <li>
+            <ul >
+                <li v-for="(contact,i) in contacts">
                     <div class="contact-user">
                         <div class="chat-user">
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img :src="contact.avatar" alt="">
                             <div class="contact-description">
-                                <h4>Michele</h4>
+                                <h4>{{contact.name}}</h4>
                                 <p>Lorem ipsum dolor sit amet.</p>
                             </div>
-        
+
                             <p class="time">16:15</p>
                         </div>
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <div class="contact-user">
                         <div class="chat-user">
                             <img src="./img/avatar_2.jpg" alt="">
@@ -146,11 +146,11 @@
                         </div>
                     </div>
                 </li>
-              
+               -->
 
             </ul>
 
-            
+
 
 
         </aside>
@@ -158,7 +158,7 @@
         <!-- Sezione chatbox -->
 
         <div class="chatbox">
-        <!-- utente selezionato -->
+            <!-- utente selezionato -->
             <div class="contact-user">
                 <div class="chat-user">
                     <img src="./img/avatar_1.jpg" alt="">
@@ -192,16 +192,18 @@
                         <p class="time-chat">16:15</p>
                     </div>
                     <div class="message">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia ipsa
-                        tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime placeat
-                        ratione ex rerum.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia
+                            ipsa
+                            tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime
+                            placeat
+                            ratione ex rerum.</p>
                     </div>
                 </div>
 
                 <!-- messaggio ricevuto -->
                 <div class="chat-white">
                     <div class="chat-modal-time">
-                        
+
                         <i class="fa-solid fa-chevron-down"></i>
                         <!-- BONUS -->
                         <div class="modal-menu">
@@ -214,15 +216,17 @@
                         <p class="time-chat">16:15</p>
                     </div>
                     <div class="message">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia ipsa
-                        tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime placeat
-                        ratione ex rerum.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae eveniet quis debitis officia
+                            ipsa
+                            tenetur quos illum iusto unde libero repellat architecto facilis, asperiores a maxime
+                            placeat
+                            ratione ex rerum.</p>
                     </div>
                 </div>
 
             </div>
 
-            
+
             <!-- Sezione scrivi messaggio -->
             <div class="writing">
                 <i class="fa-regular fa-face-smile"></i>
