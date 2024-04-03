@@ -15,7 +15,7 @@
         <!-- Sezione contatti -->
         <aside class="contacts">
             <div class="contact-user">
-                <img src="./img/avatar_3.jpg" alt="">
+                <img :src="contacts[currentUser].avatar" alt="">
                 <div class="icon">
                     <i class="fa-solid fa-message"></i>
                     <i class="fa-solid fa-arrow-rotate-right"></i>
@@ -163,9 +163,9 @@
             <!-- utente selezionato -->
             <div class="contact-user">
                 <div class="chat-user">
-                    <img src="./img/avatar_1.jpg" alt="">
+                    <img :src="contacts[currentUser].avatar" alt="">
                     <div class="contact-description">
-                        <h4>Michele</h4>
+                        <h4>{{contacts[currentUser].name}}</h4>
                         <p>Ultimo accesso oggi alle 16:26</p>
                     </div>
 
