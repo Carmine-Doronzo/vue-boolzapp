@@ -3,6 +3,15 @@ const { createApp } = Vue
 createApp({
     data() {
         return { 
+            filter:[],
+            search:'',
+            answers:[
+                'muori!!!',
+                'ammazzati!!',
+                'sei uno stronzo!!',
+                'tua madre ha anche figli normali?',
+                'OK!!'
+            ],
             newMessage :'',
             currentUser: 0,
             contacts: [
@@ -179,20 +188,29 @@ createApp({
                 }
                 this.contacts[this.currentUser].messages.push(this.newMessage)
                 this.newMessage = ''
+                setTimeout(()=>{
+                    this.newMessage = {
+                        message:this.answers[this.randomAnswers()],
+                        date:'20/03/2020 16:50:55',
+                        status:'received'
+                    }
+                    this.contacts[this.currentUser].messages.push(this.newMessage)
+                    this.newMessage=''
+                },1000)
             }
-            setTimeout(()=>{
-                this.newMessage = {
-                    message:'OK!!!',
-                    date:'20/03/2020 16:50:55',
-                    status:'received'
-                }
-                this.contacts[this.currentUser].messages.push(this.newMessage)
-                this.newMessage=''
-            },1000)
+             
+            
+        },
+        randomAnswers(){
+            const i = Math.floor(Math.random() * this.answers.length)
+            return i
+            
         }
 
     },
+    
     mounted(){
         console.log(this.contacts[0].messages[0].status)
-    }
+        
+    }   
 }).mount('#app')
