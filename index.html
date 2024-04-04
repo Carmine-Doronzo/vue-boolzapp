@@ -15,7 +15,7 @@
         <!-- Sezione contatti -->
         <aside class="contacts">
             <div class="contact-user">
-                <img :src="contacts[currentUser].avatar" alt="">
+                <img src="./img/avatar_io.jpg" alt="">
                 <div class="icon">
                     <i class="fa-solid fa-message"></i>
                     <i class="fa-solid fa-arrow-rotate-right"></i>
@@ -48,8 +48,8 @@
                             <img :src="contact.avatar" alt="">
                             <div class="contact-description">
                                 <h4>{{contact.name}}</h4>
-                                <div v-for="(message,i) in contacts[i].messages" >
-                                    <p>{{message.message}}</p>
+                                <div v-for="(message,i) in contacts[i].messages"  >
+                                    <p v-if="message.status === 'received'">{{message.message}}</p>
                                 </div>
                             </div>
 
@@ -191,7 +191,7 @@
                                 <li>segna come letto</li>
                             </ul>
                         </div>
-                        <p class="time-chat">16:15</p>
+                        <p class="time-chat">{{message.date.slice(11,16)}}</p>
                     </div>
                     <div class="message">
                         <p>{{message.message}}</p>
@@ -230,7 +230,7 @@
                 <i class="fa-regular fa-face-smile"></i>
                 <div class="text">
 
-                    <input type="text" placeholder=" Scrivi un messaggio">
+                    <input v-model="newMessage" v-on:keyup.enter="messageElement()" type="text" placeholder=" Scrivi un messaggio">
 
 
                 </div>

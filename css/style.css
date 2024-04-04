@@ -120,6 +120,7 @@ background: linear-gradient(0deg, rgba(218,218,210,1) 76%, rgba(0,149,134,1) 76%
     background-image: url('../img/mine.jpg');
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 

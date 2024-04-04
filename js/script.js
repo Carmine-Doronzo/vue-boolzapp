@@ -2,7 +2,8 @@ const { createApp } = Vue
 
 createApp({
     data() {
-        return {
+        return { 
+            newMessage :'',
             currentUser: 0,
             contacts: [
                 {
@@ -169,6 +170,26 @@ createApp({
         }
     },
     methods:{
+        messageElement(){
+            if(this.newMessage !== ''){
+                this.newMessage = {
+                    message:this.newMessage,
+                    date:'20/03/2020 16:30:55',
+                    status:'sent'
+                }
+                this.contacts[this.currentUser].messages.push(this.newMessage)
+                this.newMessage = ''
+            }
+            setTimeout(()=>{
+                this.newMessage = {
+                    message:'OK!!!',
+                    date:'20/03/2020 16:50:55',
+                    status:'received'
+                }
+                this.contacts[this.currentUser].messages.push(this.newMessage)
+                this.newMessage=''
+            },1000)
+        }
 
     },
     mounted(){
