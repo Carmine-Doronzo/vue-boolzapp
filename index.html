@@ -42,7 +42,7 @@
 
             <!-- lista contatti disponibili -->
             <ul>
-                <li v-for="(contact,i) in contacts" @click="currentUser = i" :class="contact.name.toLowerCase().includes(search) || contact.name.toUpperCase().includes(search)  ? '':'d-none'">
+                <li v-for="(contact,i) in contacts" @click="currentUser = i" :class="contact.name.toLowerCase().includes(search.toLowerCase())   ? '':'d-none'">
                     <div class="contact-user"  >
                         <div class="chat-user">
                             <img :src="contact.avatar" alt="">
@@ -181,7 +181,7 @@
             <!-- messaggio inviato -->
             <div class="main-chat">
                 <div :class="message.status ==='sent' ? 'chat-green':'chat-white'" v-for="(message,i) in contacts[currentUser].messages">
-                    <div class="chat-modal-time">
+                    <div class="chat-modal-time" @click="">
                         <i class="fa-solid fa-chevron-down"></i>
                         <!-- BONUS -->
                         <div class="modal-menu">
