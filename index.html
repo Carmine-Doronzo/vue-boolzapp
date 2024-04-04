@@ -48,12 +48,12 @@
                             <img :src="contact.avatar" alt="">
                             <div class="contact-description">
                                 <h4>{{contact.name}}</h4>
-                                <div v-for="(message,i) in contacts[i].messages"  >
-                                    <p>{{message.message}}</p>
+                                <div>
+                                    <p>{{contact.messages[contacts[i].messages.length-1].message}}</p>
                                 </div>
                             </div>
 
-                            <p class="time">16:15</p>
+                            <p class="time">{{contact.messages[contacts[i].messages.length-1].date.slice(11,16)}}</p>
                         </div>
                     </div>
                 </li>
