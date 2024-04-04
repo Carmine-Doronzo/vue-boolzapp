@@ -4,6 +4,7 @@ createApp({
     data() {
         return { 
             search:'',
+            present : [],
             answers:[
                 'muori!!!',
                 'ammazzati!!',
@@ -204,12 +205,24 @@ createApp({
             const i = Math.floor(Math.random() * this.answers.length)
             return i
             
+        },
+        modalMenu(i){
+            if(this.present[i] === false){
+            this.present[i] = true
+            }else{
+                this.present[i] = false
+            }
+            console.log(this.present[i]);
+        },
+        deleteMessage(i){
+            this.contacts[this.currentUser].messages.splice(i,1)
         }
 
     },
     
     mounted(){
         console.log(this.contacts[0].messages[0].status)
-        
+        this.present = this.contacts.map(present=>{return {modalMenu:false}})
+        console.log(this.present);
     }   
 }).mount('#app')

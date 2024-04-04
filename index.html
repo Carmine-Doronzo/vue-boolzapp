@@ -181,16 +181,17 @@
             <!-- messaggio inviato -->
             <div class="main-chat">
                 <div :class="message.status ==='sent' ? 'chat-green':'chat-white'" v-for="(message,i) in contacts[currentUser].messages">
-                    <div class="chat-modal-time" @click="">
-                        <i class="fa-solid fa-chevron-down"></i>
-                        <!-- BONUS -->
-                        <div class="modal-menu">
+                    <div class="chat-modal-time" >
+                        <i class="fa-solid fa-chevron-down" @click="modalMenu(i)"></i>
+                        <div class="modal-menu" :class="present[i] === false ?'d-block':''">
                             <ul>
-                                <li>cancella</li>
+                                <li @click="deleteMessage(i)">cancella</li>
                                 <li>inoltra</li>
                                 <li>segna come letto</li>
                             </ul>
                         </div>
+                        <!-- BONUS -->
+                        
                         <p class="time-chat">{{message.date.slice(11,16)}}</p>
                     </div>
                     <div class="message">
