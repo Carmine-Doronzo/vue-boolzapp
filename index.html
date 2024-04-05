@@ -49,11 +49,11 @@
                             <div class="contact-description">
                                 <h4>{{contact.name}}</h4>
                                 <div>
-                                    <p>{{contact.messages[contacts[i].messages.length-1].message}}</p>
+                                    <p>{{contact.messages[contacts[i].messages.length -1].message}}</p>
                                 </div>
                             </div>
 
-                            <p class="time">{{contact.messages[contacts[i].messages.length-1].date.slice(11,16)}}</p>
+                            <p class="time">{{contact.messages[contacts[i].messages.length -1].date.slice(11,16)}}</p>
                         </div>
                     </div>
                 </li>
@@ -166,7 +166,8 @@
                     <img :src="contacts[currentUser].avatar" alt="">
                     <div class="contact-description">
                         <h4>{{contacts[currentUser].name}}</h4>
-                        <p>Ultimo accesso oggi alle 16:26</p>
+                        <p v-if="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length -1].date.slice(11,16)}}</p>
+                        <p v-else="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length -2].date.slice(11,16)}}</p>
                     </div>
 
                 </div>

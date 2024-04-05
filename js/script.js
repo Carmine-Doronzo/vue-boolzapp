@@ -2,17 +2,17 @@ const { createApp } = Vue
 
 createApp({
     data() {
-        return { 
-            search:'',
-            present : [],
-            answers:[
+        return {
+            search: '',
+            present: [],
+            answers: [
                 'come stai?',
                 'va bene',
                 'ne sei sicuro?',
                 'non sono d`accordo',
                 'OK!!'
             ],
-            newMessage :'',
+            newMessage: '',
             currentUser: 0,
             contacts: [
                 {
@@ -84,7 +84,7 @@ createApp({
                 {
                     name: 'Alessandro B.',
                     avatar: './img/avatar_4.jpg',
-                    visible: true, 
+                    visible: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -178,52 +178,53 @@ createApp({
             ]
         }
     },
-    methods:{
-        messageElement(){
-            if(this.newMessage !== ''){
+    methods: {
+        messageElement() {
+            if (this.newMessage !== '') {
                 this.newMessage = {
-                    message:this.newMessage,
-                    date:'20/03/2020 16:30:55',
-                    status:'sent'
+                    message: this.newMessage,
+                    date: '20/03/2020 16:30:55',
+                    status: 'sent'
                 }
-                this.contacts[this.currentUser].messages.push(this.newMessage)
+                const message = this.contacts[this.currentUser].messages
+                message.push(this.newMessage)
                 this.newMessage = ''
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.newMessage = {
-                        message:this.answers[this.randomAnswers()],
-                        date:'20/03/2020 16:50:55',
-                        status:'received'
+                        message: this.answers[this.randomAnswers()],
+                        date: '20/03/2020 16:50:55',
+                        status: 'received'
                     }
-                    this.contacts[this.currentUser].messages.push(this.newMessage)
-                    this.newMessage=''
-                },1000)
+                    message.push(this.newMessage)
+                    this.newMessage = ''
+                }, 5000)
             }
-             
-            
+
+
         },
-        randomAnswers(){
+        randomAnswers() {
             const i = Math.floor(Math.random() * this.answers.length)
             return i
-            
+
         },
-        modalMenu(i){
-            if(this.present[i] === false){
-            this.present[i] = true
-            }else{
+        modalMenu(i) {
+            if (this.present[i] === false) {
+                this.present[i] = true
+            } else {
                 this.present[i] = false
             }
             console.log(this.present[i]);
         },
-        deleteMessage(i){
-            this.contacts[this.currentUser].messages.splice(i,1)
+        deleteMessage(i) {
+            this.contacts[this.currentUser].messages.splice(i, 1)
             this.modalMenu(i)
         }
 
     },
-    
-    mounted(){
+
+    mounted() {
         console.log(this.contacts[0].messages[0].status)
-        this.present = this.contacts.map(present=>{return {modalMenu:false}})
+        this.present = this.contacts.map(() => { return { modalMenu: false } })
         console.log(this.present);
-    }   
+    }
 }).mount('#app')
