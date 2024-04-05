@@ -180,28 +180,40 @@ createApp({
     },
     methods: {
         messageElement() {
+            let dateWithouthSecond = new Date();
+            let hours = dateWithouthSecond.toLocaleTimeString({hour: '2-digit', minute:'2-digit', second:'2-digit'});
+            console.log(hours)
             if (this.newMessage !== '') {
                 this.newMessage = {
                     message: this.newMessage,
-                    date: '20/03/2020 16:30:55',
+                    date: `10/01/2020 ${hours}`,
                     status: 'sent'
                 }
                 const message = this.contacts[this.currentUser].messages
                 message.push(this.newMessage)
                 this.newMessage = ''
                 setTimeout(() => {
+                    let dateWithouthSecond = new Date();
+                    let hours = dateWithouthSecond.toLocaleTimeString({hour: '2-digit', minute:'2-digit', second:'2-digit'});
+                    console.log(hours)
                     this.newMessage = {
                         message: this.answers[this.randomAnswers()],
-                        date: '20/03/2020 16:50:55',
+                        date: `10/01/2020 ${hours}`,
                         status: 'received'
                     }
                     message.push(this.newMessage)
                     this.newMessage = ''
-                }, 5000)
+                }, 60000)
             }
 
 
         },
+        newDate(){
+            
+
+
+        },
+        
         randomAnswers() {
             const i = Math.floor(Math.random() * this.answers.length)
             return i
@@ -221,10 +233,15 @@ createApp({
         }
 
     },
+    computed:{
+        
+    },
 
     mounted() {
         console.log(this.contacts[0].messages[0].status)
         this.present = this.contacts.map(() => { return { modalMenu: false } })
         console.log(this.present);
+        
+        
     }
 }).mount('#app')

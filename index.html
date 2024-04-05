@@ -42,8 +42,9 @@
 
             <!-- lista contatti disponibili -->
             <ul>
-                <li v-for="(contact,i) in contacts" @click="currentUser = i" :class="contact.name.toLowerCase().includes(search.toLowerCase())   ? '':'d-none'">
-                    <div class="contact-user"  >
+                <li v-for="(contact,i) in contacts" @click="currentUser = i"
+                    :class="contact.name.toLowerCase().includes(search.toLowerCase())   ? '':'d-none'">
+                    <div class="contact-user">
                         <div class="chat-user">
                             <img :src="contact.avatar" alt="">
                             <div class="contact-description">
@@ -166,8 +167,14 @@
                     <img :src="contacts[currentUser].avatar" alt="">
                     <div class="contact-description">
                         <h4>{{contacts[currentUser].name}}</h4>
-                        <p v-if="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length -1].date.slice(11,16)}}</p>
-                        <p v-else="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length -2].date.slice(11,16)}}</p>
+                        <p
+                            v-if="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">
+                            Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length
+                            -1].date.slice(11,16)}}</p>
+                        <p
+                            v-else>
+                            Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length
+                            -2].date.slice(11,16)}}</p>
                     </div>
 
                 </div>
@@ -181,8 +188,9 @@
 
             <!-- messaggio inviato -->
             <div class="main-chat">
-                <div :class="message.status ==='sent' ? 'chat-green':'chat-white'" v-for="(message,i) in contacts[currentUser].messages">
-                    <div class="chat-modal-time" >
+                <div :class="message.status ==='sent' ? 'chat-green':'chat-white'"
+                    v-for="(message,i) in contacts[currentUser].messages">
+                    <div class="chat-modal-time">
                         <i class="fa-solid fa-chevron-down" @click="modalMenu(i)"></i>
                         <div class="modal-menu" :class="present[i] === false ?'d-block':''">
                             <ul>
@@ -192,23 +200,23 @@
                             </ul>
                         </div>
                         <!-- BONUS -->
-                        
+
                         <p class="time-chat">{{message.date.slice(11,16)}}</p>
                     </div>
                     <div class="message">
                         <p>{{message.message}}</p>
-                        
+
                     </div>
-                    
+
                 </div>
 
                 <!-- messaggio ricevuto -->
-                 <!-- <div class="chat-white" v-for="(message,i) in contacts[currentUser].messages">
+                <!-- <div class="chat-white" v-for="(message,i) in contacts[currentUser].messages">
                     <div class="chat-modal-time">
 
                         <i class="fa-solid fa-chevron-down"></i> -->
-                        <!-- BONUS -->
-                        <!-- <div class="modal-menu">
+                <!-- BONUS -->
+                <!-- <div class="modal-menu">
                             <ul>
                                 <li>cancella</li>
                                 <li>inoltra</li>
@@ -232,7 +240,8 @@
                 <i class="fa-regular fa-face-smile"></i>
                 <div class="text">
 
-                    <input v-model="newMessage" v-on:keyup.enter="messageElement()" type="text" placeholder=" Scrivi un messaggio">
+                    <input v-model="newMessage" v-on:keyup.enter="messageElement()" type="text"
+                        placeholder=" Scrivi un messaggio">
 
 
                 </div>
