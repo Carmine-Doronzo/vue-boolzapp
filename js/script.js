@@ -6,10 +6,10 @@ createApp({
             search:'',
             present : [],
             answers:[
-                'muori!!!',
-                'ammazzati!!',
-                'sei uno stronzo!!',
-                'tua madre ha anche figli normali?',
+                'come stai?',
+                'va bene',
+                'ne sei sicuro?',
+                'non sono d`accordo',
                 'OK!!'
             ],
             newMessage :'',
@@ -216,6 +216,7 @@ createApp({
         },
         deleteMessage(i){
             this.contacts[this.currentUser].messages.splice(i,1)
+            this.modalMenu(i)
         }
 
     },
