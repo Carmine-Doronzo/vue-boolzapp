@@ -181,7 +181,7 @@ createApp({
     methods: {
         messageElement() {
             let dateWithouthSecond = new Date();
-            let hours = dateWithouthSecond.toLocaleTimeString({hour: '2-digit', minute:'2-digit', second:'2-digit'});
+            let hours = dateWithouthSecond.toLocaleTimeString({ hour: '2-digit', minute: '2-digit', second: '2-digit' });
             console.log(hours)
             if (this.newMessage !== '') {
                 this.newMessage = {
@@ -194,7 +194,7 @@ createApp({
                 this.newMessage = ''
                 setTimeout(() => {
                     let dateWithouthSecond = new Date();
-                    let hours = dateWithouthSecond.toLocaleTimeString({hour: '2-digit', minute:'2-digit', second:'2-digit'});
+                    let hours = dateWithouthSecond.toLocaleTimeString({ hour: '2-digit', minute: '2-digit', second: '2-digit' });
                     console.log(hours)
                     this.newMessage = {
                         message: this.answers[this.randomAnswers()],
@@ -208,12 +208,8 @@ createApp({
 
 
         },
-        newDate(){
-            
 
 
-        },
-        
         randomAnswers() {
             const i = Math.floor(Math.random() * this.answers.length)
             return i
@@ -233,15 +229,15 @@ createApp({
         }
 
     },
-    computed:{
-        
+    computed: {
+
     },
 
     mounted() {
         console.log(this.contacts[0].messages[0].status)
         this.present = this.contacts.map(() => { return { modalMenu: false } })
         console.log(this.present);
-        
-        
+
+
     }
 }).mount('#app')

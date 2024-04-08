@@ -49,12 +49,21 @@
                             <img :src="contact.avatar" alt="">
                             <div class="contact-description">
                                 <h4>{{contact.name}}</h4>
-                                <div>
-                                    <p>{{contact.messages[contacts[i].messages.length -1].message}}</p>
+                                <div v-if="contact.messages[contacts[i].messages.length -1] === contact.messages[-1]">
+                                    <p>N.D</p>
+
+                                </div>
+                                <div v-else-if="contact.messages[contacts[i].messages.length] !== 0  ">
+                                    {{contact.messages[contacts[i].messages.length -1].message}}
                                 </div>
                             </div>
 
-                            <p class="time">{{contact.messages[contacts[i].messages.length -1].date.slice(11,16)}}</p>
+
+                            <p class="time"
+                                v-if="contact.messages[contacts[i].messages.length -1] === contact.messages[-1] ">N.D.
+                            </p>
+                            <p class="time" v-else-if="contact.messages[contacts[i].messages.length] !== 0">
+                                {{contact.messages[contacts[i].messages.length -1].date.slice(11,16)}}</p>
                         </div>
                     </div>
                 </li>
@@ -167,14 +176,17 @@
                     <img :src="contacts[currentUser].avatar" alt="">
                     <div class="contact-description">
                         <h4>{{contacts[currentUser].name}}</h4>
-                        <p
-                            v-if="contacts[currentUser].messages[contacts[currentUser].messages.length -1].status === 'received'">
+                        <div >
+                            <p v-if="contacts[currentUser].messages[contacts[currentUser].messages.length -1] === contacts[currentUser].messages[-1]">ultimo accesso N.D</p>
+                            <p v-else-if="contacts[currentUser].messages[contacts[currentUser].messages.length] !== 0 ">
+                                Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length
+                                -1].date.slice(11,16)}}</p>
+                             <!-- <p v-else>
                             Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length
-                            -1].date.slice(11,16)}}</p>
-                        <p
-                            v-else>
-                            Ultimo accesso: {{contacts[currentUser].messages[contacts[currentUser].messages.length
-                            -2].date.slice(11,16)}}</p>
+                            -2].date.slice(11,16)}}</p>  -->
+
+                        </div>
+                        
                     </div>
 
                 </div>
