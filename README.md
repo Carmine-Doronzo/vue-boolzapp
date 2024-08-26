@@ -1,0 +1,2 @@
+in questo esercizio ho ripreso il layout di htmlcss-boolzap e implementando Vue.js da cdn aggiunto le funzioni per mandare un messaggio e ricevere la risposta entro 1 minuto.
+La risposta sarà casuale tra 5 preimpostate.
